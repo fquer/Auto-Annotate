@@ -18,30 +18,27 @@ from object_detection.utils import visualization_utils as viz_utils
 from object_detection.builders import model_builder
 from math import ceil
 
-CUSTOM_MODEL_NAME = 'isaret_dili_2'
-WORKSPACE_PATH = 'C:\\Users\\Kaan\\PycharmProjects\\TensorEnv\\IsaretDiliCevirmen\\Tensorflow\\workspace'
-ANNOTATION_PATH = WORKSPACE_PATH+'\\annotations'
-IMAGE_PATH = WORKSPACE_PATH+'\\images\\auto_annote\\images\\' #iamges folder path !
-SAMPLE_PATH = "C:\\Users\\Kaan\\PycharmProjects\\TensorEnv\\IsaretDiliCevirmen\\Tensorflow\\workspace\\images\\auto_annote\\samples\\" #samples folder path !
-XML_PATH = "C:\\Users\\Kaan\\PycharmProjects\\TensorEnv\\IsaretDiliCevirmen\\Tensorflow\\workspace\\images\\auto_annote\\xmls\\" #xmls folder path !
-MODEL_PATH = WORKSPACE_PATH+'\\models'
-CONFIG_PATH = MODEL_PATH+'\\'+CUSTOM_MODEL_NAME+'\\saved\\pipeline.config' #pipeline config file path !
-CHECKPOINT_PATH = MODEL_PATH+'\\'+CUSTOM_MODEL_NAME+'\\'+'saved\\checkpoint' # checkpoint folder path !
+""" PATHS must end with \\ """
 
-labels={"banyo",
-        "esit",
-        "evet",
-        "hayir",
-        "wow",
-        "acik",
-        "kapali",
-        "kalin",
-        "aramak",
-        "carpismak"} #include class names here !
+IMAGE_PATH = '' # images folder path !
+SAMPLE_PATH = '' # samples folder path !
+XML_PATH = '' # xmls folder path !
+CONFIG_PATH = '' # pipeline config file path !
 
-label_id_offset = 16 #number of started jpg files ex: hello_1 -> hello_128 !
+# does not end with \\
+CHECKPOINT_PATH = '' # model checkpoint folder path !
+
+labels={""} #include class names here !
+
+label_id_offset = 1 #number of started jpg files ex: hello_1 -> hello_128 !
 splitter = '_' #ex : hello-1.jpg  splitter is -    !
 max_id_label = 100 #this number not included   !
+
+# XML Settings
+
+FOLDER = ''  #any folder name !
+WIDTH = ''  #jpg width and height !
+HEIGHT = '' # !
 
 def generate_xml(LABEL,ID):
     try:
@@ -59,12 +56,8 @@ def generate_xml(LABEL,ID):
 
 def edit_xml(LABEL,ID,XMIN,YMIN,XMAX,YMAX):
     try:
-
-        FOLDER = 'test'  #any folder name !
-        PATH = 'C:\\Users\\Kaan\\PycharmProjects\\TensorEnv\\IsaretDiliCevirmen\\Tensorflow\\workspace\\images\\auto_annote\\images\\{}{}{}.jpg'.format(
-            LABEL, splitter, str(ID))  # any path of jpg file !
-        WIDTH = '1920'  #jpg width and height !
-        HEIGHT = '1080' # !
+        
+        PATH = IMAGE_PATH + '{}{}{}.jpg'.format(LABEL, splitter, str(ID))  # any path of jpg file
 
         fin = open(XML_PATH + "{}{}{}.xml".format(LABEL, splitter, str(ID)),"rt")
 
