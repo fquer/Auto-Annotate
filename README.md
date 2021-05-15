@@ -3,7 +3,7 @@ Automation label image files and creates .xml files with trained model.
 
 Sample folder are required to work script.
 
-IMPORTANT ! We need to update visualization_utils.py file.
+IMPORTANT ! We need to update visualization_utils.py file to use coordinates.
 
 Go to C:\Users\YourUserName\anaconda3\Lib\site-packages\object_detection\utils
 
