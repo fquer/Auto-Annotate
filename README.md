@@ -4,9 +4,13 @@ Automation label image files and creates .xml files with trained model.
 Sample folder are required to work script.
 
 IMPORTANT ! We need to update visualization_utils.py file.
+
 Go to C:\Users\YourUserName\anaconda3\Lib\site-packages\object_detection\utils
+
 And find visualization_utils.py
+
 Replace with my file.
+
 Its done.
 
 
