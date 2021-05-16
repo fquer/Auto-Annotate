@@ -17,6 +17,7 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 from object_detection.builders import model_builder
 from math import ceil
+from PIL import Image
 
 """ PATHS must end with \\ """
 
@@ -56,6 +57,8 @@ def generate_xml(LABEL,ID):
 
 def edit_xml(LABEL,ID,XMIN,YMIN,XMAX,YMAX):
     try:
+        img = Image.open(IMAGE_PATH + '{}{}{}.jpg'.format(label, splitter,str(id)))
+        WIDTH,HEIGHT = img.size
         
         PATH = IMAGE_PATH + '{}{}{}.jpg'.format(LABEL, splitter, str(ID))  # any path of jpg file
 
@@ -68,8 +71,8 @@ def edit_xml(LABEL,ID,XMIN,YMIN,XMAX,YMAX):
         data = data.replace('FOLDER', FOLDER)
         data = data.replace('FILENAME', LABEL + '_' + str(ID) + '.jpg')
         data = data.replace('PATH', PATH)
-        data = data.replace('WIDTH', WIDTH)
-        data = data.replace('HEIGHT', HEIGHT)
+        data = data.replace('WIDTH', str(WIDTH))
+        data = data.replace('HEIGHT', str(HEIGHT))
         data = data.replace('LABEL', LABEL)
         data = data.replace('XMIN', str(XMIN))
         data = data.replace('YMIN', str(YMIN))
