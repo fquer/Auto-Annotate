@@ -1,4 +1,4 @@
-# Auto-Annotate
+# Auto Annotate Images
 Automation label image files and creates .xml files with trained model. 
 
 Sample folder are required to work script.
